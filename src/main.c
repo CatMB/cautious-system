@@ -73,5 +73,9 @@ int main() {
         }
     }
 
+    SDL_DestroyRenderer(renderer);
+    SDL_DestroyWindow(win);
+    SDL_Quit();
+
     return 0;
 }

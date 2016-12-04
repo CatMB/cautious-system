@@ -1,6 +1,6 @@
 project(ffffff)
 
-cmake_minimum_required(VERSION 3.6)
+cmake_minimum_required(VERSION 3.5)
 
 set(SOURCES
 main.c
@@ -9,6 +9,8 @@ main.c
 add_executable(${PROJECT_NAME} src/${SOURCES})
 
 INCLUDE(FindPkgConfig)
+INCLUDE(ExternalProject)
+ExternalProject_Add(SDL HG_REPOSITORY https://hg.libsdl.org/SDL)
 
 PKG_SEARCH_MODULE(SDL2 REQUIRED sdl2)
 PKG_SEARCH_MODULE(SDL2IMAGE REQUIRED SDL2_image>=2.0.0)
