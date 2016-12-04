@@ -6,7 +6,7 @@ set(SOURCES
 main.c
 )
 
-add_executable(${PROJECT_NAME} main.c)
+add_executable(${PROJECT_NAME} src/${SOURCES})
 
 INCLUDE(FindPkgConfig)
 
