@@ -50,7 +50,7 @@ int main() {
     const int player_h = 64;
     double player_scale = 1.0;
 
-    SDL_Texture *player;
+    SDL_Texture *player = IMG_LoadTexture(renderer, "../res/player-mock.png");
     SDL_Texture *background;
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background, NULL, &background_rect);
@@ -58,10 +58,17 @@ int main() {
     SDL_RenderPresent(renderer);
     printf("ffffff v1.0\n");
 
+    SDL_Texture *textures_array[2] = {background, player};
+    SDL_Rect *rect_array[2] = {&background_rect, &player_rect};
+    int textureState_array[2] = {1, 1};
+
     SDL_Event event;
     bool exit = false;
     while(!exit) {
         while(SDL_PollEvent(&event)) {
+            if(event.type == SDL_QUIT) {
+                exit = true;
+            }
             SDL_PumpEvents();
         }
     }
