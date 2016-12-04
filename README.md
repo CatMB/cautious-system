@@ -1,6 +1,12 @@
-**ffffff**\n\n
-*Installing*
+# ffffff
+
+
+# Installing
+
 `mkdir build`
+
 `cd build`
+
 `cmake ..`
+
 `make`
