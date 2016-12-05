@@ -49,7 +49,7 @@ int main() {
     const int player_h = 64;
     double player_scale = 1.0;
 
-    SDL_Texture *player = IMG_LoadTexture(renderer, "../res/hero/sprites/hero-1/player_1.png");
+    SDL_Texture *player = IMG_LoadTexture(renderer, "res/hero/sprites/hero-1/player_1.png");
     SDL_Texture *background;
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background, NULL, &background_rect);
