@@ -16,7 +16,6 @@ int main() {
 
     // Получаем состояние нулевого монитора.
     int request = SDL_GetDesktopDisplayMode(0, &displayMode);
-
     // Создаем окно
     SDL_Window *win = SDL_CreateWindow("ffffff", 0, 0, displayMode.w / 2,
     displayMode.h / 2, SDL_WINDOW_SHOWN);
@@ -50,7 +49,7 @@ int main() {
     const int player_h = 64;
     double player_scale = 1.0;
 
-    SDL_Texture *player = IMG_LoadTexture(renderer, "../res/player-mock.png");
+    SDL_Texture *player = IMG_LoadTexture(renderer, "../res/hero/sprites/hero-1/player_1.png");
     SDL_Texture *background;
     SDL_RenderClear(renderer);
     SDL_RenderCopy(renderer, background, NULL, &background_rect);
@@ -66,10 +65,16 @@ int main() {
     bool exit = false;
     while(!exit) {
         while(SDL_PollEvent(&event)) {
+            SDL_RenderClear(renderer);
+            SDL_RenderCopy(renderer, textures_array[0], NULL, rect_array[0]);
+            SDL_RenderCopy(renderer, textures_array[1], NULL, rect_array[1]);
+            SDL_RenderPresent(renderer);
             if(event.type == SDL_QUIT) {
                 exit = true;
             }
+
             SDL_PumpEvents();
+
         }
     }
 
