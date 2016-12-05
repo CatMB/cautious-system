@@ -2,7 +2,6 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "SDL_mixer.h"
-#include "stdio.h"
 
 int main() {
     // Создаем DisplayMode.
@@ -33,11 +32,12 @@ int main() {
     }
 
     // Создаем прямоугольники текстур.
+    double player_scale = 1.0;
     SDL_Rect player_rect;
     player_rect.x = 0;
     player_rect.y = 0;
-    player_rect.h = 64;
-    player_rect.w = 64;
+    player_rect.h = (int) (64 * player_scale);
+    player_rect.w = (int) (64 * player_scale);
     // ----------
     SDL_Rect background_rect;
     background_rect.x = 0;
@@ -45,9 +45,8 @@ int main() {
     background_rect.h = displayMode.h / 2;
     background_rect.w = displayMode.w / 2;
     // ----------
-    const int player_w = 64;
-    const int player_h = 64;
-    double player_scale = 1.0;
+    const int player_w = (const int) (64 * player_scale);
+    const int player_h = (const int) (64 * player_scale);
 
     SDL_Texture *player = IMG_LoadTexture(renderer, "res/hero/sprites/hero-1/player_1.png");
     SDL_Texture *background;
@@ -60,6 +59,8 @@ int main() {
     SDL_Texture *textures_array[2] = {background, player};
     SDL_Rect *rect_array[2] = {&background_rect, &player_rect};
     int textureState_array[2] = {1, 1};
+    int move_multiplier = 10;
+
 
     SDL_Event event;
     bool exit = false;
@@ -72,7 +73,27 @@ int main() {
             if(event.type == SDL_QUIT) {
                 exit = true;
             }
+            if(event.type == SDL_KEYDOWN) {
+                SDL_Keycode key_down = event.key.keysym.sym;
 
+
+                switch(key_down) {
+                    case SDLK_h: // Left
+                        rect_array[1]->y -= move_multiplier;
+                        break;
+                    case SDLK_j: // Down
+                        rect_array[1]->x += move_multiplier;
+                        break;
+                    case SDLK_k: // Up
+                        rect_array[1]->x -= move_multiplier;
+                        break;
+                    case SDLK_l: // Right
+                        rect_array[1]->y += move_multiplier;
+                        break;
+                    default:
+                        break;
+                }
+            }
             SDL_PumpEvents();
 
         }
