@@ -8,7 +8,7 @@
 # Before installing
 ArchLinux:
 ```
-pacman -S sdl2_image sdl2_mixer
+pacman -S sdl2 sdl2_image sdl2_mixer
 ```
 Ubuntu/Debian:
 ```
