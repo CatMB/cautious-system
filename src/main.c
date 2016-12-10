@@ -4,6 +4,9 @@
 #include "SDL_mixer.h"
 
 int main() {
+
+    const int FPS = 120;
+
     // Создаем DisplayMode.
     SDL_DisplayMode displayMode;
 
@@ -67,8 +70,7 @@ int main() {
     int currentHero;
     currentHero = 1;
     //Переменные для ограничения количества обновлений/сек
-    int fps = 60;
-	int minimumFrameTime = 1000 / fps;
+	int minimumFrameTime = 1000 / FPS;
     int frameTime;
     int lastFrameTime = 0;
     int deltaTime = 0;
